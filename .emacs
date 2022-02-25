@@ -4,7 +4,7 @@
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(cua-mode t nil (cua-base))
- '(custom-enabled-themes '(tsdh-dark))
+ '(custom-enabled-themes '(zerodark))
  '(custom-safe-themes
    '("c0f4b66aa26aa3fded1cbefe50184a08f5132756523b640f68f3e54fd5f584bd" default))
  '(font-use-system-font t)
@@ -71,5 +71,6 @@
 (global-set-key (kbd "C-:") 'avy-goto-char-2)
 
 
+(global-set-key [(control shift s)] 'grep-find)
 
 
