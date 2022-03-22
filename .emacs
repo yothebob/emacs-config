@@ -7,6 +7,8 @@
    [default bold shadow italic underline bold bold-italic bold])
  '(ansi-color-names-vector
    ["black" "red3" "ForestGreen" "yellow3" "blue" "magenta3" "DeepSkyBlue" "gray50"])
+ '(bongo-default-directory "/home/bbrodrick/Music")
+ '(bongo-enabled-backends '(vlc mpv))
  '(cua-mode t nil (cua-base))
  '(custom-enabled-themes '(zerodark))
  '(custom-safe-themes
@@ -14,8 +16,9 @@
  '(fci-rule-color "#14151E")
  '(global-display-line-numbers-mode t)
  '(package-selected-packages
-   '(centaur-tabs beacon minimap neotree yaml-mode csv-mode vterm alarm-clock speed-type jupyter metar noaa sunshine auto-correct auto-complete blamer exwm zerodark-theme horizon-theme emamux avy afternoon-theme ample-theme multiple-cursors slack skewer-mode web-mode python))
+   '(popup-kill-ring edit-color-stamp markdown-mode dmenu use-package ssh alert multi-term anaconda-mode mines centaur-tabs beacon neotree yaml-mode csv-mode vterm alarm-clock speed-type jupyter metar noaa sunshine auto-correct auto-complete blamer exwm zerodark-theme horizon-theme emamux avy afternoon-theme ample-theme multiple-cursors slack skewer-mode web-mode python))
  '(show-paren-mode t)
+ '(tool-bar-mode nil)
  '(vc-annotate-background nil)
  '(vc-annotate-color-map
    '((20 . "#d54e53")
@@ -89,14 +92,17 @@
 ;; load in MELPA package support
 (require 'package)
 (add-to-list 'package-archives '("melpa" . "https://melpa.org/packages/") t)
-;; Comment/uncomment this line to enable MELPA Stable if desired.  See `package-archive-priorities`
-;; and `package-pinned-packages`. Most users will not need or want to do this.
-;;(add-to-list 'package-archives '("melpa-stable" . "https://stable.melpa.org/packages/") t)
 (package-initialize)
 
 
+;; anaconda find function hothey
+(global-set-key (kbd "C-`") 'anaconda-mode-find-definitions)
+
 ;; multiple cursors
 (global-set-key (kbd "C-c m c") 'mc/edit-lines)
+
+;; find & replace (only replace in visual block)
+(global-set-key [(control shift f)] 'replace-string)
 
 ;; avy go to any char C-: b == a hotkey for any letter b
 (global-set-key (kbd "C-;") 'avy-goto-char)
@@ -110,18 +116,43 @@
 ;; neotree toggle
 (global-set-key [f8] 'neotree-toggle)
 
-;;minimap mode
-(global-set-key [f6] 'minimap-mode)
-
 ;; Beacon cursor flash on
 (beacon-mode 1)
 
-
+;; anaconda mode enabled 
+(add-hook 'python-mode-hook 'anaconda-mode)
+(add-hook 'python-mode-hook 'anaconda-eldoc-mode)
 
 ;; centaur
 (global-set-key [f7] 'centaur-tabs-mode)
-(centaur-tabs-headline-match)
 (setq centaur-tabs-style "bar")
 (global-set-key (kbd "C-<prior>") 'centaur-tabs-backward)
 (global-set-key (kbd "C-<next>") 'centaur-tabs-forward)
+
+
+;; search for word on cursor
+(global-set-key (kbd "C-*")
+  (lambda ()
+    (interactive)
+    (re-search-forward (format "\\b%s\\b" (thing-at-point 'word)))))
+
+;; launch Term
+(global-set-key (kbd "s-<return>") 'term)
+
+;; better paste (using cuda keys)
+(global-set-key [(control shift v)]  'popup-kill-ring)
+
+;; HOT KEYS TO NOT FORGET!!!!
+;; C-<space> = mark line (highlight, move up/down to highlight those)
+;; M-gg = goto line
+;; (edit in read-only mode) C-x C-q
+;; M-% = replace-query
+;; C-x ( == start marco
+;; C-x ) == end macro
+;; C-x e == run marco
+;; C-u == repeat function (ex: C-u 20 marco = run macro 20 times)
+
+
+;; Multi-term
+;; (setq multi-term-program "/bin/bash")
 
