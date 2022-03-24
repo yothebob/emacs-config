@@ -14,12 +14,15 @@
  '(custom-enabled-themes '(cyberpunk))
  '(custom-safe-themes
    '("b89a4f5916c29a235d0600ad5a0849b1c50fab16c2c518e1d98f0412367e7f97" "fd23280005748f3d1e15d2ce612dbe7003d7d551b5debd4287b6eeafd8994413" "c0f4b66aa26aa3fded1cbefe50184a08f5132756523b640f68f3e54fd5f584bd" "69b30fcd01e0bce8accefc2fd2f241b84ecbec13ec49719cdda5df550073886e" "bf798e9e8ff00d4bf2512597f36e5a135ce48e477ce88a0764cfb5d8104e8163" "c9ddf33b383e74dac7690255dd2c3dfa1961a8e8a1d20e401c6572febef61045" "36ca8f60565af20ef4f30783aa16a26d96c02df7b4e54e9900a5138fb33808da" "57e3f215bef8784157991c4957965aa31bac935aca011b29d7d8e113a652b693" default))
+ '(display-time-mode t)
  '(fci-rule-color "#14151E")
  '(global-company-mode t)
  '(global-display-line-numbers-mode t)
+ '(inhibit-startup-echo-area-message nil)
  '(initial-buffer-choice "~/Open-projects")
  '(package-selected-packages
-   '(ac-emoji phps-mode cyberpunk-2019-theme cyberpunk-theme company-php company-anaconda sorcery-theme annoying-arrows-mode popup-kill-ring edit-color-stamp markdown-mode dmenu use-package ssh alert multi-term anaconda-mode mines centaur-tabs beacon neotree yaml-mode csv-mode vterm alarm-clock speed-type jupyter metar noaa sunshine auto-correct auto-complete blamer exwm zerodark-theme horizon-theme emamux avy afternoon-theme ample-theme multiple-cursors slack skewer-mode web-mode python))
+   '(what-the-commit web-server company-web code-cells all ac-emoji phps-mode cyberpunk-2019-theme cyberpunk-theme company-php company-anaconda sorcery-theme annoying-arrows-mode popup-kill-ring edit-color-stamp markdown-mode dmenu use-package ssh alert multi-term anaconda-mode mines centaur-tabs beacon neotree yaml-mode csv-mode vterm alarm-clock speed-type jupyter metar noaa sunshine auto-correct auto-complete blamer exwm zerodark-theme horizon-theme emamux avy afternoon-theme ample-theme multiple-cursors slack skewer-mode web-mode python))
+ '(scroll-bar-mode nil)
  '(show-paren-mode t)
  '(tool-bar-mode nil)
  '(vc-annotate-background nil)
@@ -107,10 +110,6 @@
 ;;(add-to-list 'package-archives '("melpa-stable" . "https://stable.melpa.org/packages/") t)
 (package-initialize)
 
-;; run async shell command
-(global-set-key (kbd "s-SPC") 'async-shell-command)
-
-
 ;; anaconda find function hothey
 (global-set-key (kbd "C-`") 'anaconda-mode-find-definitions)
 
@@ -179,6 +178,34 @@
 (diary 0)
 (appt-activate)
 
+;;slack setup
+(use-package slack
+  :commands (slack-start)
+  :init
+  (setq slack-prefer-current-team t)
+  (setq slack-buffer-emojify t) ;; if you want to enable emoji, default nil
+  :config
+(slack-register-team
+ :name "parthenon"
+ :token "xoxc-2729177917-2518647985332-3184100401986-6b37d4a2cb93533cc8f87f57ad2d77bfaf2189666fe7a359a1473ae4a2494a99"
+ :cookie "Nn7d26h4PdIdl%2Bii%2FhPLg1zKpeW3FaWKur26bKxLgiJhqneB5Cr8fN9a7KaP%2BhCZOBDhPFT3sXGnHRi2TFKJ0N60sX46GLO5TzI1SbJ%2FLitMzsAe2WpK2cFgeCUK8OXWwFNflwH3nhsPIIQAeooCY2oeSDjuNRr2MZrRbn2barAzaBkfr%2BZx7Q%3D%3D"))
+
+   (use-package alert
+  :commands (alert)
+  :init
+  (setq alert-default-style 'notifier))
+(slack-start)
+
+
+(defun print-joke ()
+  "gets a programming dad joke and displays it"
+  ;; (interactive)
+  (shell-command
+   ;; beginning and end of buffer
+   ;; command and parameters
+   "bash ~/.tell_joke.sh"))
+;; on startup tell joke
+(print-joke)
 
 ;; HOT KEYS TO NOT FORGET!!!!
 ;; C-<space> = mark line (highlight, move up/down to highlight those)
@@ -190,6 +217,8 @@
 ;; C-x e == run marco
 ;; C-u == repeat function (ex: C-u 20 marco = run macro 20 times)
 ;; C-h f == see docs for a function
+;; M-& == async-shell-command
+;; M-! == shell-command
 ;; menu-bar-mode (turn off/on menubar)
 
 ;; Multi-term
@@ -199,3 +228,9 @@
 ;; Emoji!
 (add-hook 'markdown-mode-hook 'ac-emoji-setup)
 (add-hook 'git-commit-mode-hook 'ac-emoji-setup)
+
+;; all hotkey
+(global-set-key (kbd "C-x a l") 'all)
+
+;; on start
+
