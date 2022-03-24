@@ -178,24 +178,6 @@
 (diary 0)
 (appt-activate)
 
-;;slack setup
-(use-package slack
-  :commands (slack-start)
-  :init
-  (setq slack-prefer-current-team t)
-  (setq slack-buffer-emojify t) ;; if you want to enable emoji, default nil
-  :config
-(slack-register-team
- :name "parthenon"
- :token "xoxc-2729177917-2518647985332-3184100401986-6b37d4a2cb93533cc8f87f57ad2d77bfaf2189666fe7a359a1473ae4a2494a99"
- :cookie "Nn7d26h4PdIdl%2Bii%2FhPLg1zKpeW3FaWKur26bKxLgiJhqneB5Cr8fN9a7KaP%2BhCZOBDhPFT3sXGnHRi2TFKJ0N60sX46GLO5TzI1SbJ%2FLitMzsAe2WpK2cFgeCUK8OXWwFNflwH3nhsPIIQAeooCY2oeSDjuNRr2MZrRbn2barAzaBkfr%2BZx7Q%3D%3D"))
-
-   (use-package alert
-  :commands (alert)
-  :init
-  (setq alert-default-style 'notifier))
-(slack-start)
-
 
 (defun print-joke ()
   "gets a programming dad joke and displays it"
