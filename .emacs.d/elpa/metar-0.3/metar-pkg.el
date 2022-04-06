@@ -1,2 +1,0 @@
-;;; Generated package description from /home/bbrodrick/.emacs.d/elpa/metar-0.3/metar.el  -*- no-byte-compile: t -*-
-(define-package "metar" "0.3" "Retrieve and decode METAR weather information" '((cl-lib "0.5")) :url "http://elpa.gnu.org/packages/metar.html" :keywords '("comm") :authors '(("Mario Lang" . "mlang@delysid.org")) :maintainer '("Mario Lang" . "mlang@delysid.org"))
