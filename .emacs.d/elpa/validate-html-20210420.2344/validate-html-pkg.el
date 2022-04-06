@@ -1,0 +1,2 @@
+;;; Generated package description from /home/bbrodrick/.emacs.d/elpa/validate-html-20210420.2344/validate-html.el  -*- no-byte-compile: t -*-
+(define-package "validate-html" "20210420.2344" "Compilation mode for W3C HTML Validator" '((emacs "25.1")) :commit "748e874d50c3a95c61590ae293778e26de05c5f9" :authors '(("Arthur A. Gleckler" . "melpa4aag@speechcode.com")) :maintainer '("Arthur A. Gleckler" . "melpa4aag@speechcode.com") :keywords '("languages" "tools") :url "https://github.com/arthurgleckler/validate-html")

@@ -1,0 +1,2 @@
+;;; Generated package description from /home/bbrodrick/.emacs.d/elpa/what-the-commit-20150901.1316/what-the-commit.el  -*- no-byte-compile: t -*-
+(define-package "what-the-commit" "20150901.1316" "Random commit message generator" 'nil :commit "868c80a1b8614bcbd2225cd0290142c72f2a7956" :authors '(("Dan Barbarito" . "dan@barbarito.me")) :maintainer '("Dan Barbarito" . "dan@barbarito.me") :keywords '("git" "commit" "message") :url "http://barbarito.me/")

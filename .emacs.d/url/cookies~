@@ -1,0 +1,24 @@
+;; Emacs-W3 HTTP cookies file
+;; Automatically generated file!!! DO NOT EDIT!!!
+
+(setq url-cookie-storage
+ '(("mwach.vagrant.internal"
+  [url-cookie "sessionid" "ejd2ycfhwpy9vszpkp1m4ezc3sv2xw3k" "Tue Apr 05 20:14:19 2022 GMT" "/" "mwach.vagrant.internal" nil]
+  [url-cookie "csrftoken" "K11g8RVLdAXNUYT1l4WJmlWQrBQw3aqkTzYv2B8lg5e6jMMkQQsP4aFCiPjgzvKW" "Tue Mar 21 20:14:29 2023 GMT" "/" "mwach.vagrant.internal" nil])
+ (".google.com"
+  [url-cookie "NID" "511=uzj3ROCz4eG3vPa3FUKeYw_IddRNh7DRgZOx178Uc4ElIiiUgoJJztl2BDnuWF4e-gOShZFFF-qKSNFDjeVVjrc7ycaEfWIr5taS3HK8BYFs0Yynai9nFqyZrnfymGtX-0NCBACqoVFTyQKh_Tfhr9DU5mqDHsa9URd8QY7aagE" "Sun, 04-Sep-2022 00:42:10 GMT" "/" ".google.com" nil]))
+)
+(setq url-cookie-secure-storage
+ '(("chili.parthenonsoftware.com"
+  [url-cookie "autologin" "48d257563b8039fb582bdea4d19abe61d2d1e932" "Thu, 09 Mar 2023 19:41:21 -0000" "/" "chili.parthenonsoftware.com" t])
+ ("geeksforgeeks.org"
+  [url-cookie "AKA_A2" "A" "Fri, 25-Mar-2022 17:53:36 GMT" "/" "geeksforgeeks.org" t])
+ (".google.com"
+  [url-cookie "1P_JAR" "2022-03-25-16" "Sun, 24-Apr-2022 16:54:10 GMT" "/" ".google.com" t]
+  [url-cookie "AEC" "AVQQ_LAih7HAPLYqJCDBSrkl8t9u0q_8mLErZEXMkkULJd7m4vaHUeJIeQ" "Wed, 21-Sep-2022 16:54:10 GMT" "/" ".google.com" t]))
+)
+
+;; Local Variables:
+;; version-control: never
+;; no-byte-compile: t
+;; End:
