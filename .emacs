@@ -7,23 +7,20 @@
    [default bold shadow italic underline bold bold-italic bold])
  '(ansi-color-names-vector
    ["black" "red3" "ForestGreen" "yellow3" "blue" "magenta3" "DeepSkyBlue" "gray50"])
- '(bongo-default-directory "/home/bbrodrick/Music")
- '(bongo-enabled-backends '(vlc mpv))
  '(centaur-tabs-mode t nil (centaur-tabs))
+ '(centaur-tabs-plain-icons t)
+ '(centaur-tabs-set-icons t)
  '(cua-mode t nil (cua-base))
- '(custom-enabled-themes '(cyberpunk))
+ '(custom-enabled-themes '(zerodark))
  '(custom-safe-themes
    '("0ac7d13bc30eac2f92bbc3008294dafb5ba5167f2bf25c0a013f29f62763b996" "3a78cae35163bb71df460ebcfdebf811fd7bc74eaa15428c7e0bccfd4f858d30" "94a94c957cf4a3f8db5f12a7b7e8f3e68f686d76ae8ed6b82bd09f6e6430a32c" "b89a4f5916c29a235d0600ad5a0849b1c50fab16c2c518e1d98f0412367e7f97" "fd23280005748f3d1e15d2ce612dbe7003d7d551b5debd4287b6eeafd8994413" "c0f4b66aa26aa3fded1cbefe50184a08f5132756523b640f68f3e54fd5f584bd" "69b30fcd01e0bce8accefc2fd2f241b84ecbec13ec49719cdda5df550073886e" "bf798e9e8ff00d4bf2512597f36e5a135ce48e477ce88a0764cfb5d8104e8163" "c9ddf33b383e74dac7690255dd2c3dfa1961a8e8a1d20e401c6572febef61045" "36ca8f60565af20ef4f30783aa16a26d96c02df7b4e54e9900a5138fb33808da" "57e3f215bef8784157991c4957965aa31bac935aca011b29d7d8e113a652b693" default))
  '(display-time-mode t)
- '(elfeed-feeds
-   '("https://chili.parthenonsoftware.com/projects.atom?key=ff74631416172f6f425d389e11c223bff83ba650") t)
  '(fci-rule-color "#14151E")
  '(global-company-mode t)
  '(global-display-line-numbers-mode t)
  '(inhibit-startup-echo-area-message nil)
- '(initial-buffer-choice "~/Open-projects")
  '(package-selected-packages
-   '(validate-html vagrant vagrant-tramp counsel-tramp frontside-javascript dark-krystal-theme cherry-blossom-theme evil elfeed emmet-mode vlf what-the-commit web-server company-web code-cells all ac-emoji phps-mode cyberpunk-2019-theme cyberpunk-theme company-php company-anaconda sorcery-theme annoying-arrows-mode popup-kill-ring edit-color-stamp markdown-mode dmenu use-package ssh alert multi-term anaconda-mode mines centaur-tabs beacon neotree yaml-mode csv-mode vterm alarm-clock speed-type jupyter metar noaa sunshine auto-correct auto-complete blamer exwm zerodark-theme horizon-theme emamux avy afternoon-theme ample-theme multiple-cursors slack skewer-mode web-mode python))
+   '(all-the-icons dashboard vagrant vagrant-tramp counsel-tramp frontside-javascript dark-krystal-theme cherry-blossom-theme evil elfeed emmet-mode vlf what-the-commit web-server company-web code-cells all ac-emoji phps-mode cyberpunk-2019-theme cyberpunk-theme company-php company-anaconda sorcery-theme annoying-arrows-mode popup-kill-ring edit-color-stamp markdown-mode dmenu use-package ssh alert multi-term anaconda-mode mines centaur-tabs beacon neotree yaml-mode csv-mode vterm alarm-clock speed-type jupyter metar noaa sunshine auto-correct auto-complete blamer exwm zerodark-theme horizon-theme emamux avy afternoon-theme ample-theme multiple-cursors slack skewer-mode web-mode python))
  '(pdf-view-midnight-colors '("#dddddd" . "#000000"))
  '(scroll-bar-mode nil)
  '(show-paren-mode t)
@@ -55,67 +52,14 @@
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(default ((t (:family "DejaVu Sans Mono" :foundry "PfEd" :slant normal :weight normal :height 128 :width normal))))
- '(centaur-tabs-active-bar-face ((t (:background "DeepSkyBlue"))))
- '(centaur-tabs-close-selected ((t (:inherit centaur-tabs-selected :foreground "DeepSkyBlue"))))
+ '(centaur-tabs-active-bar-face ((t (:background "medium orchid"))))
+ '(centaur-tabs-close-selected ((t (:inherit centaur-tabs-selected :foreground "OliveDrab3"))))
  '(centaur-tabs-close-unselected ((t (:inherit centaur-tabs-unselected :weight semi-bold))))
- '(centaur-tabs-default ((t (:background "DeepSkyBlue" :foreground "black"))))
+ '(centaur-tabs-default ((t (:background "gray25" :foreground "black"))))
  '(centaur-tabs-modified-marker-selected ((t (:inherit centaur-tabs-selected :weight semi-bold))))
- '(centaur-tabs-unselected ((t (:background "gray25" :foreground "DeepSkyBlue"))))
- '(centaur-tabs-unselected-modified ((t (:background "gray25" :foreground "DeepSkyBlue" :overline nil :underline nil)))))
+ '(centaur-tabs-unselected ((t (:background "gray25" :foreground "medium orchid"))))
+ '(centaur-tabs-unselected-modified ((t (:background "gray23" :foreground "steel blue" :overline nil :underline nil)))))
 
-
-
-
-;; ###############################################
-;; ###########    CUSTOM CONFIG    ###############
-;; ###############################################
-
-
-;; Emoji!
-(add-hook 'markdown-mode-hook 'ac-emoji-setup)
-(add-hook 'git-commit-mode-hook 'ac-emoji-setup)
-
-;; global autocomplete mode (company-mode)
-(global-company-mode)
-
-;; default off
-(menu-bar-mode 0)
-
-;; load in MELPA package support
-(require 'package)
-(add-to-list 'package-archives '("melpa" . "https://melpa.org/packages/") t)
-(package-initialize)
-
-;;centaur config
-(centaur-tabs-headline-match)
-(setq centaur-tabs-style "box")
-(setq centaur-tabs-set-bar 'over)
-(setq centaur-tabs-gray-out-icons 'buffer)
-
-;; display time, notify of appointments
-(display-time)
-(add-hook 'diary-hook 'appt-make-list)
-(diary 0)
-(appt-activate)
-
-;; on startup tell joke
-(print-joke)
-
-
-;; ###############################################
-;; ###########  SPECIAL FUNCTIONS   ##############
-;; ###############################################
-
-(defun print-joke ()
-  "gets a programming dad joke and displays it"
-  ;; (interactive)
-  (shell-command
-   "bash ~/.tell_joke.sh"
-   (split-window-horizontally)))
-
-(defun search-word-on-cursor ()
-  (interactive)
-  (re-search-forward (format "\\b%s\\b" (thing-at-point 'word))))
 
 (defun move-line-up ()
   "Move up the current line."
@@ -124,6 +68,7 @@
   (forward-line -2)
   (indent-according-to-mode))
 (global-set-key [(control shift up)]  'move-line-up)
+
 
 (defun move-line-down ()
   "Move down the current line."
@@ -134,6 +79,7 @@
   (indent-according-to-mode))
 (global-set-key [(control shift down)]  'move-line-down)
 
+
 (defun duplicate-line()
   (interactive)
   (move-beginning-of-line 1)
@@ -142,7 +88,8 @@
   (open-line 1)
   (next-line 1)
   (yank))
-(global-set-key (kbd "C-d") 'duplicate-line)
+(global-set-key [(control shift d)]  'duplicate-line)
+
 
 (defun comment-or-uncomment-region-or-line ()
     "Comments or uncomments the region or the current line if there's no active region."
@@ -154,6 +101,31 @@
         (comment-or-uncomment-region beg end)))
 (global-set-key (kbd "C-'") 'comment-or-uncomment-region-or-line)
 
+
+(defun xah-search-current-word ()
+  "Call `isearch' on current word or text selection.
+“word” here is A to Z, a to z, and hyphen 「-」 and underline 「_」, independent of syntax table.
+URL `http://xahlee.info/emacs/emacs/modernization_isearch.html'
+Version 2015-04-09"
+  (interactive)
+  (let ( $p1 $p2 )
+    (if (use-region-p)
+        (progn
+          (setq $p1 (region-beginning))
+          (setq $p2 (region-end)))
+      (save-excursion
+        (skip-chars-backward "-_A-Za-z0-9")
+        (setq $p1 (point))
+        (right-char)
+        (skip-chars-forward "-_A-Za-z0-9")
+        (setq $p2 (point))))
+    (setq mark-active nil)
+    (when (< $p1 (point))
+      (goto-char $p1))
+    (isearch-mode t)
+    (isearch-yank-string (buffer-substring-no-properties $p1 $p2))))
+
+
 (defun better-kill-line()
   " allways kill the whole line "
   (interactive)
@@ -162,18 +134,26 @@
 (global-set-key (kbd "C-k") 'better-kill-line)
 
 
-
-;; ###############################################
-;; ###########    KEY BINDINGS     ###############
-;; ###############################################
-
-
+;; load in MELPA package support
+(require 'package)
+(add-to-list 'package-archives '("melpa" . "https://melpa.org/packages/") t)
+(package-initialize)
 
 ;; anaconda find function hothey
 (global-set-key (kbd "C-`") 'anaconda-mode-find-definitions)
 
+;; better i-search
+(global-set-key (kbd "C-s") 'xah-search-current-word)
+
+;; zoom in/out
+(global-set-key (kbd "C--") 'text-scale-decrease)
+(global-set-key (kbd "C-=") 'text-scale-increase)
+
 ;; multiple cursors
 (global-set-key (kbd "C-c m c") 'mc/edit-lines)
+
+;; upcase-region (ALL CAP REGION)
+(global-set-key (kbd "C-c C-u") 'upcase-region)
 
 ;; find & replace (only replace in visual block)
 (global-set-key [(control shift f)] 'replace-string)
@@ -203,11 +183,21 @@
   :bind
   ("C-<prior>" . centaur-tabs-backward)
   ("C-<next>" . centaur-tabs-forward))
+
+
 (global-set-key [f7] 'centaur-tabs-mode)
+(centaur-tabs-headline-match)
+(setq centaur-tabs-style "slant")
+(setq centaur-tabs-set-bar 'over)
+(setq centaur-tabs-gray-out-icons 'buffer)
+(global-set-key (kbd "C-<prior>") 'centaur-tabs-backward)
+(global-set-key (kbd "C-<next>") 'centaur-tabs-forward)
 
 ;; search for word on cursor
-(global-set-key (kbd "C-*" 'search-word-on-cursor)
-
+(global-set-key (kbd "C-*")
+  (lambda ()
+    (interactive)
+    (re-search-forward (format "\\b%s\\b" (thing-at-point 'word)))))
 
 ;; search for .. (dired mode)
 (global-set-key (kbd "C-.")
@@ -215,6 +205,10 @@
     (interactive)
     (search-backward "..")))
 
+;; global autocomplete mode (company-mode)
+(use-package company-mode
+  :ensure t)
+(global-company-mode)
 
 ;; launch Term
 (global-set-key (kbd "s-<return>")
@@ -222,15 +216,83 @@
   (interactive)
   (term "/bin/bash")))
   
-;; bongo pause/resume
-(global-set-key (kbd "C-x p p") 'bongo-pause/resume)
 
 ;; toggle menubar
 (global-set-key [f9] 'menu-bar-mode)
+(menu-bar-mode 0);; default off
 
 ;; better paste (using cuda keys)
 (global-set-key [(control shift v)]  'popup-kill-ring)
 
+;; display time, notify of appointments
+(display-time)
+(add-hook 'diary-hook 'appt-make-list)
+(diary 0)
+(appt-activate)
+
+
+(defun print-joke ()
+  "gets a programming dad joke and displays it"
+  ;; (interactive)
+  (shell-command
+   ;; beginning and end of buffer
+   ;; command and parameters
+   "bash ~/.tell_joke.sh"
+   (split-window-horizontally)))
+
+;;custom dashboard
+(use-package dashboard
+  :ensure t
+  :config
+  (dashboard-setup-startup-hook))
+
+;; Set the title
+(setq dashboard-banner-logo-title "Welcome to Emacs Dashboard")
+;;(setq dashboard-startup-banner "/home/bbrodrick/Downloads/badtime/bad_time.gif") 
+;; Value can be
+;; 'official which displays the official emacs logo
+;; 'logo which displays an alternative emacs logo
+;; 1, 2 or 3 which displays one of the text banners
+;; "path/to/your/image.gif", "path/to/your/image.png" or "path/to/your/text.txt" which displays whatever gif/image/text you would prefer
+
+;; Content is not centered by default. To center, set
+(setq dashboard-center-content t)
+
+;; To disable shortcut "jump" indicators for each section, set
+(setq dashboard-show-shortcuts nil)
+
+(add-to-list 'dashboard-items '(agenda) t)
+;; to show weekly schedule
+(setq dashboard-week-agenda t)
+
+
+;; on startup tell joke
+;; (print-joke)
+
+;; HOT KEYS TO NOT FORGET!!!!
+;; C-<space> = mark line (highlight, move up/down to highlight those)
+;; M-gg = goto line
+;; (edit in read-only mode) C-x C-q
+;; M-% = replace-query
+;; C-x ( == start marco
+;; C-x ) == end macro
+;; C-x e == run marco
+;; C-u == repeat function (ex: C-u 20 marco = run macro 20 times)
+;; C-h f == see docs for a function
+;; M-& == async-shell-command
+;; M-! == shell-command
+;; menu-bar-mode (turn off/on menubar)
+
+
 ;; all hotkey
 (global-set-key (kbd "C-x a l") 'all)
+
+(use-package bongo
+  :ensure t)
+
+(global-set-key (kbd "C-x p p") 'bongo-pause/resume)
+
+
+(put 'upcase-region 'disabled nil)
+
 
