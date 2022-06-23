@@ -7,20 +7,24 @@
    [default bold shadow italic underline bold bold-italic bold])
  '(ansi-color-names-vector
    ["black" "red3" "ForestGreen" "yellow3" "blue" "magenta3" "DeepSkyBlue" "gray50"])
+ '(bongo-enabled-backends '(vlc mpv))
  '(centaur-tabs-mode t nil (centaur-tabs))
  '(centaur-tabs-plain-icons t)
  '(centaur-tabs-set-icons t)
  '(cua-mode t nil (cua-base))
  '(custom-enabled-themes '(zerodark))
  '(custom-safe-themes
-   '("0ac7d13bc30eac2f92bbc3008294dafb5ba5167f2bf25c0a013f29f62763b996" "3a78cae35163bb71df460ebcfdebf811fd7bc74eaa15428c7e0bccfd4f858d30" "94a94c957cf4a3f8db5f12a7b7e8f3e68f686d76ae8ed6b82bd09f6e6430a32c" "b89a4f5916c29a235d0600ad5a0849b1c50fab16c2c518e1d98f0412367e7f97" "fd23280005748f3d1e15d2ce612dbe7003d7d551b5debd4287b6eeafd8994413" "c0f4b66aa26aa3fded1cbefe50184a08f5132756523b640f68f3e54fd5f584bd" "69b30fcd01e0bce8accefc2fd2f241b84ecbec13ec49719cdda5df550073886e" "bf798e9e8ff00d4bf2512597f36e5a135ce48e477ce88a0764cfb5d8104e8163" "c9ddf33b383e74dac7690255dd2c3dfa1961a8e8a1d20e401c6572febef61045" "36ca8f60565af20ef4f30783aa16a26d96c02df7b4e54e9900a5138fb33808da" "57e3f215bef8784157991c4957965aa31bac935aca011b29d7d8e113a652b693" default))
+   '("f24121b2dbfbe78bd722a767d6a020561ac1ca4a21b8f7ff6b198e074d2b214b" "0ac7d13bc30eac2f92bbc3008294dafb5ba5167f2bf25c0a013f29f62763b996" "3a78cae35163bb71df460ebcfdebf811fd7bc74eaa15428c7e0bccfd4f858d30" "94a94c957cf4a3f8db5f12a7b7e8f3e68f686d76ae8ed6b82bd09f6e6430a32c" "b89a4f5916c29a235d0600ad5a0849b1c50fab16c2c518e1d98f0412367e7f97" "fd23280005748f3d1e15d2ce612dbe7003d7d551b5debd4287b6eeafd8994413" "c0f4b66aa26aa3fded1cbefe50184a08f5132756523b640f68f3e54fd5f584bd" "69b30fcd01e0bce8accefc2fd2f241b84ecbec13ec49719cdda5df550073886e" "bf798e9e8ff00d4bf2512597f36e5a135ce48e477ce88a0764cfb5d8104e8163" "c9ddf33b383e74dac7690255dd2c3dfa1961a8e8a1d20e401c6572febef61045" "36ca8f60565af20ef4f30783aa16a26d96c02df7b4e54e9900a5138fb33808da" "57e3f215bef8784157991c4957965aa31bac935aca011b29d7d8e113a652b693" default))
  '(display-time-mode t)
  '(fci-rule-color "#14151E")
+ '(font-use-system-font t)
  '(global-company-mode t)
  '(global-display-line-numbers-mode t)
  '(inhibit-startup-echo-area-message nil)
+ '(initial-buffer-choice "~/Open-projects")
+ '(org-support-shift-select 'always)
  '(package-selected-packages
-   '(all-the-icons dashboard vagrant vagrant-tramp counsel-tramp frontside-javascript dark-krystal-theme cherry-blossom-theme evil elfeed emmet-mode vlf what-the-commit web-server company-web code-cells all ac-emoji phps-mode cyberpunk-2019-theme cyberpunk-theme company-php company-anaconda sorcery-theme annoying-arrows-mode popup-kill-ring edit-color-stamp markdown-mode dmenu use-package ssh alert multi-term anaconda-mode mines centaur-tabs beacon neotree yaml-mode csv-mode vterm alarm-clock speed-type jupyter metar noaa sunshine auto-correct auto-complete blamer exwm zerodark-theme horizon-theme emamux avy afternoon-theme ample-theme multiple-cursors slack skewer-mode web-mode python))
+   '(atom-one-dark-theme zweilight-theme go-mode sweet-theme the-matrix-theme all-the-icons dashboard vagrant vagrant-tramp counsel-tramp frontside-javascript dark-krystal-theme cherry-blossom-theme evil emmet-mode vlf what-the-commit web-server company-web all ac-emoji phps-mode cyberpunk-2019-theme cyberpunk-theme company-php company-anaconda sorcery-theme popup-kill-ring edit-color-stamp markdown-mode use-package alert anaconda-mode mines centaur-tabs beacon neotree yaml-mode csv-mode alarm-clock speed-type auto-correct auto-complete blamer zerodark-theme horizon-theme emamux avy afternoon-theme ample-theme multiple-cursors slack skewer-mode web-mode python))
  '(pdf-view-midnight-colors '("#dddddd" . "#000000"))
  '(scroll-bar-mode nil)
  '(show-paren-mode t)
@@ -61,6 +65,34 @@
  '(centaur-tabs-unselected-modified ((t (:background "gray23" :foreground "steel blue" :overline nil :underline nil)))))
 
 
+(defun move-region-down ()
+    (interactive)
+  (let* ((end (region-end))
+         (text (buffer-substring (region-beginning)end))))
+  (next-line)
+  (kill-line)
+  (region-beginning)
+  (previous-line)
+  (yank)
+  )
+
+
+;; (defun move-text-down (arg)
+;;   "Move region (transient-mark-mode active) or current line
+;;   arg lines down."
+;;   (interactive)
+;;   (move-text-internal arg))
+;; (global-set-key [(control shift down)]  'move-text-up)
+
+;; (defun move-text-up (arg)
+;;   "Move region (transient-mark-mode active) or current line
+;;   arg lines up."
+;;   (interactive)
+;;   (move-text-internal (- arg)))
+;; (global-set-key [(control shift down)]  'move-text-down)
+
+
+
 (defun move-line-up ()
   "Move up the current line."
   (interactive)
@@ -88,7 +120,24 @@
   (open-line 1)
   (next-line 1)
   (yank))
-(global-set-key [(control shift d)]  'duplicate-line)
+
+(defun duplicate-start-of-line-or-region ()
+  (interactive)
+  (if mark-active
+      (duplicate-region)
+    (duplicate-line)))
+
+(defun duplicate-region ()
+  (let* ((end (region-end))
+         (text (buffer-substring (region-beginning)
+                                 end)))
+    (goto-char end)
+    (insert text)
+    (push-mark end)
+    (setq deactivate-mark nil)
+    (exchange-point-and-mark)))
+
+(global-set-key [(control shift d)]  'duplicate-start-of-line-or-region)
 
 
 (defun comment-or-uncomment-region-or-line ()
@@ -100,6 +149,7 @@
             (setq beg (line-beginning-position) end (line-end-position)))
         (comment-or-uncomment-region beg end)))
 (global-set-key (kbd "C-'") 'comment-or-uncomment-region-or-line)
+
 
 
 (defun xah-search-current-word ()
@@ -126,12 +176,35 @@ Version 2015-04-09"
     (isearch-yank-string (buffer-substring-no-properties $p1 $p2))))
 
 
+
 (defun better-kill-line()
   " allways kill the whole line "
   (interactive)
   (move-beginning-of-line 1)
   (kill-line))
 (global-set-key (kbd "C-k") 'better-kill-line)
+
+
+(defun better-kill-word()
+  " allways kill the whole word "
+  (interactive)
+  (forward-word)
+  (backward-word)
+  (kill-word 1))
+(global-set-key (kbd "M-d") 'better-kill-word)
+
+
+;; (defun stringify-word()
+;;   " allways kill the whole word "
+;;   (interactive)
+;;   (forward-word)
+;;   (backward-word)
+;;   (insert-char "s")
+;;   (backward-word)
+;;   (forward-word)
+;;   (insert))
+;; (global-set-key (kbd "M-d") 'better-kill-word)
+
 
 
 ;; load in MELPA package support
@@ -143,7 +216,8 @@ Version 2015-04-09"
 (global-set-key (kbd "C-`") 'anaconda-mode-find-definitions)
 
 ;; better i-search
-(global-set-key (kbd "C-s") 'xah-search-current-word)
+(global-set-key (kbd "C-c s") 'xah-search-current-word)
+(global-set-key (kbd "C-s") 'isearch-forward)
 
 ;; zoom in/out
 (global-set-key (kbd "C--") 'text-scale-decrease)
@@ -206,20 +280,19 @@ Version 2015-04-09"
     (search-backward "..")))
 
 ;; global autocomplete mode (company-mode)
-(use-package company-mode
-  :ensure t)
 (global-company-mode)
 
 ;; launch Term
 (global-set-key (kbd "s-<return>")
 (lambda ()
+
   (interactive)
-  (term "/bin/bash")))
-  
+  (term "/bin/bash"))) 
 
 ;; toggle menubar
 (global-set-key [f9] 'menu-bar-mode)
-(menu-bar-mode 0);; default off
+;; default off
+(menu-bar-mode 0)
 
 ;; better paste (using cuda keys)
 (global-set-key [(control shift v)]  'popup-kill-ring)
@@ -229,6 +302,13 @@ Version 2015-04-09"
 (add-hook 'diary-hook 'appt-make-list)
 (diary 0)
 (appt-activate)
+
+
+   (use-package alert
+  :commands (alert)
+  :init
+  (setq alert-default-style 'notifier))
+;; (slack-start)
 
 
 (defun print-joke ()
@@ -248,7 +328,8 @@ Version 2015-04-09"
 
 ;; Set the title
 (setq dashboard-banner-logo-title "Welcome to Emacs Dashboard")
-;;(setq dashboard-startup-banner "/home/bbrodrick/Downloads/badtime/bad_time.gif") 
+;; Set the banner
+(setq dashboard-startup-banner 1)
 ;; Value can be
 ;; 'official which displays the official emacs logo
 ;; 'logo which displays an alternative emacs logo
@@ -264,7 +345,6 @@ Version 2015-04-09"
 (add-to-list 'dashboard-items '(agenda) t)
 ;; to show weekly schedule
 (setq dashboard-week-agenda t)
-
 
 ;; on startup tell joke
 ;; (print-joke)
@@ -282,17 +362,21 @@ Version 2015-04-09"
 ;; M-& == async-shell-command
 ;; M-! == shell-command
 ;; menu-bar-mode (turn off/on menubar)
+;; C-x g == magit 
 
+
+;; Emoji!
+(add-hook 'markdown-mode-hook 'ac-emoji-setup)
+(add-hook 'git-commit-mode-hook 'ac-emoji-setup)
 
 ;; all hotkey
 (global-set-key (kbd "C-x a l") 'all)
 
-(use-package bongo
-  :ensure t)
+
+;; on start
 
 (global-set-key (kbd "C-x p p") 'bongo-pause/resume)
 
-
 (put 'upcase-region 'disabled nil)
 
-
+(global-set-key (kbd "C-x a s") 'dired-hide-subdir)
