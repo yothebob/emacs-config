@@ -30,7 +30,24 @@
   (open-line 1)
   (next-line 1)
   (yank))
-(global-set-key [(control shift d)]  'duplicate-line)
+
+(defun duplicate-start-of-line-or-region ()
+  (interactive)
+  (if mark-active
+      (duplicate-region)
+    (duplicate-line)))
+
+(defun duplicate-region ()
+  (let* ((end (region-end))
+         (text (buffer-substring (region-beginning)
+                                 end)))
+    (goto-char end)
+    (insert text)
+    (push-mark end)
+    (setq deactivate-mark nil)
+    (exchange-point-and-mark)))
+
+(global-set-key [(control shift d)]  'duplicate-start-of-line-or-region)
 
 
 (defun comment-or-uncomment-region-or-line ()
@@ -135,6 +152,25 @@ Version 2015-04-09"
   (interactive)
   (term "/bin/bash")))
   
+;; launch eshell
+(global-set-key (kbd "C-c e s")
+(lambda ()
+
+  (interactive)
+  (eshell "/bin/bash"))) 
+
+;; launch ansi-term
+(global-set-key (kbd "s-S-<return>")
+(lambda ()
+  (interactive)
+  (ansi-term "/bin/bash"))) 
+
+;; launch eww search
+(global-set-key (kbd "C-c e w")
+(lambda ()
+  (interactive)
+  (eww "https://duckduckgo.com"))) 
+
 
 ;; toggle menubar
 (global-set-key [f9] 'menu-bar-mode)

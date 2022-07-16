@@ -194,16 +194,13 @@ Version 2015-04-09"
 (global-set-key (kbd "M-d") 'better-kill-word)
 
 
-;; (defun stringify-word()
-;;   " allways kill the whole word "
-;;   (interactive)
-;;   (forward-word)
-;;   (backward-word)
-;;   (insert-char "s")
-;;   (backward-word)
-;;   (forward-word)
-;;   (insert))
-;; (global-set-key (kbd "M-d") 'better-kill-word)
+(defun stringify-word()
+  (interactive)
+  (forward-word)
+  (insert "'")
+  (backward-word)
+  (insert "'"))
+  ;; (global-set-key (kbd "M-d") 'better-kill-word)
 
 
 
@@ -288,6 +285,25 @@ Version 2015-04-09"
 
   (interactive)
   (term "/bin/bash"))) 
+
+;; launch eshell
+(global-set-key (kbd "C-c e s")
+(lambda ()
+
+  (interactive)
+  (eshell "/bin/bash"))) 
+
+;; launch ansi-term
+(global-set-key (kbd "s-S-<return>")
+(lambda ()
+  (interactive)
+  (ansi-term "/bin/bash"))) 
+
+;; launch eww search
+(global-set-key (kbd "C-c e w")
+(lambda ()
+  (interactive)
+  (eww "https://duckduckgo.com"))) 
 
 ;; toggle menubar
 (global-set-key [f9] 'menu-bar-mode)
