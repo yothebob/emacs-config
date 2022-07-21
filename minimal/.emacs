@@ -21,7 +21,6 @@
   (indent-according-to-mode))
 (global-set-key [(control shift down)]  'move-line-down)
 
-
 (defun duplicate-line()
   (interactive)
   (move-beginning-of-line 1)
@@ -30,7 +29,24 @@
   (open-line 1)
   (next-line 1)
   (yank))
-(global-set-key [(control shift d)]  'duplicate-line)
+
+(defun duplicate-start-of-line-or-region ()
+  (interactive)
+  (if mark-active
+      (duplicate-region)
+    (duplicate-line)))
+
+(defun duplicate-region ()
+  (let* ((end (region-end))
+         (text (buffer-substring (region-beginning)
+                                 end)))
+    (goto-char end)
+    (insert text)
+    (push-mark end)
+    (setq deactivate-mark nil)
+    (exchange-point-and-mark)))
+
+(global-set-key [(control shift d)]  'duplicate-start-of-line-or-region)
 
 
 (defun comment-or-uncomment-region-or-line ()
@@ -42,6 +58,17 @@
             (setq beg (line-beginning-position) end (line-end-position)))
         (comment-or-uncomment-region beg end)))
 (global-set-key (kbd "C-'") 'comment-or-uncomment-region-or-line)
+
+
+(defun stringify-word()
+  (interactive)
+  (backward-word)
+  (insert "'")
+  (forward-word)
+ (insert "' "))
+
+(global-set-key (kbd "C-c w w") 'stringify-word)
+
 
 
 (defun xah-search-current-word ()
@@ -130,11 +157,27 @@ Version 2015-04-09"
 ;;(global-company-mode)
 
 ;; launch Term
-(global-set-key (kbd "s-<return>")
+(global-set-key (kbd "S-<return>")
 (lambda ()
   (interactive)
   (term "/bin/bash")))
   
+;; launch ansi term
+(global-set-key (kbd "s-S-<return>")
+(lambda ()
+
+  (interactive)
+  (ansi-term "/bin/bash")))
+
+;; eshell
+(global-set-key (kbd "C-c e s") 'eshell)
+
+;; launch eww in brave search 
+(global-set-key (kbd "C-c e w ")
+(lambda ()
+  (interactive)
+  (eww "https://duckduckgo.com/")))
+
 
 ;; toggle menubar
 (global-set-key [f9] 'menu-bar-mode)

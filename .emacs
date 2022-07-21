@@ -8,26 +8,39 @@
  '(ansi-color-names-vector
    ["black" "red3" "ForestGreen" "yellow3" "blue" "magenta3" "DeepSkyBlue" "gray50"])
  '(bongo-enabled-backends '(vlc mpv))
- '(centaur-tabs-mode t nil (centaur-tabs))
+ '(centaur-tabs-background-color "black")
+ '(centaur-tabs-mode nil nil (centaur-tabs))
  '(centaur-tabs-plain-icons t)
  '(centaur-tabs-set-icons t)
+ '(centaur-tabs-style "box")
  '(cua-mode t nil (cua-base))
  '(custom-enabled-themes '(zerodark))
  '(custom-safe-themes
-   '("f24121b2dbfbe78bd722a767d6a020561ac1ca4a21b8f7ff6b198e074d2b214b" "0ac7d13bc30eac2f92bbc3008294dafb5ba5167f2bf25c0a013f29f62763b996" "3a78cae35163bb71df460ebcfdebf811fd7bc74eaa15428c7e0bccfd4f858d30" "94a94c957cf4a3f8db5f12a7b7e8f3e68f686d76ae8ed6b82bd09f6e6430a32c" "b89a4f5916c29a235d0600ad5a0849b1c50fab16c2c518e1d98f0412367e7f97" "fd23280005748f3d1e15d2ce612dbe7003d7d551b5debd4287b6eeafd8994413" "c0f4b66aa26aa3fded1cbefe50184a08f5132756523b640f68f3e54fd5f584bd" "69b30fcd01e0bce8accefc2fd2f241b84ecbec13ec49719cdda5df550073886e" "bf798e9e8ff00d4bf2512597f36e5a135ce48e477ce88a0764cfb5d8104e8163" "c9ddf33b383e74dac7690255dd2c3dfa1961a8e8a1d20e401c6572febef61045" "36ca8f60565af20ef4f30783aa16a26d96c02df7b4e54e9900a5138fb33808da" "57e3f215bef8784157991c4957965aa31bac935aca011b29d7d8e113a652b693" default))
+   '("171d1ae90e46978eb9c342be6658d937a83aaa45997b1d7af7657546cae5985b" "f24121b2dbfbe78bd722a767d6a020561ac1ca4a21b8f7ff6b198e074d2b214b" "0ac7d13bc30eac2f92bbc3008294dafb5ba5167f2bf25c0a013f29f62763b996" "3a78cae35163bb71df460ebcfdebf811fd7bc74eaa15428c7e0bccfd4f858d30" "94a94c957cf4a3f8db5f12a7b7e8f3e68f686d76ae8ed6b82bd09f6e6430a32c" "b89a4f5916c29a235d0600ad5a0849b1c50fab16c2c518e1d98f0412367e7f97" "fd23280005748f3d1e15d2ce612dbe7003d7d551b5debd4287b6eeafd8994413" "c0f4b66aa26aa3fded1cbefe50184a08f5132756523b640f68f3e54fd5f584bd" "69b30fcd01e0bce8accefc2fd2f241b84ecbec13ec49719cdda5df550073886e" "bf798e9e8ff00d4bf2512597f36e5a135ce48e477ce88a0764cfb5d8104e8163" "c9ddf33b383e74dac7690255dd2c3dfa1961a8e8a1d20e401c6572febef61045" "36ca8f60565af20ef4f30783aa16a26d96c02df7b4e54e9900a5138fb33808da" "57e3f215bef8784157991c4957965aa31bac935aca011b29d7d8e113a652b693" default))
  '(display-time-mode t)
  '(fci-rule-color "#14151E")
  '(font-use-system-font t)
+ '(fringe-mode 6 nil (fringe))
  '(global-company-mode t)
  '(global-display-line-numbers-mode t)
  '(inhibit-startup-echo-area-message nil)
  '(initial-buffer-choice "~/Open-projects")
+ '(linum-format 'dynamic)
+ '(org-babel-load-languages '((emacs-lisp . t) (python . t) (shell . t)))
  '(org-support-shift-select 'always)
  '(package-selected-packages
-   '(atom-one-dark-theme zweilight-theme go-mode sweet-theme the-matrix-theme all-the-icons dashboard vagrant vagrant-tramp counsel-tramp frontside-javascript dark-krystal-theme cherry-blossom-theme evil emmet-mode vlf what-the-commit web-server company-web all ac-emoji phps-mode cyberpunk-2019-theme cyberpunk-theme company-php company-anaconda sorcery-theme popup-kill-ring edit-color-stamp markdown-mode use-package alert anaconda-mode mines centaur-tabs beacon neotree yaml-mode csv-mode alarm-clock speed-type auto-correct auto-complete blamer zerodark-theme horizon-theme emamux avy afternoon-theme ample-theme multiple-cursors slack skewer-mode web-mode python))
+   '(vterm smex god-mode atom-one-dark-theme go-mode sweet-theme the-matrix-theme all-the-icons dashboard counsel-tramp frontside-javascript dark-krystal-theme cherry-blossom-theme evil emmet-mode vlf what-the-commit web-server company-web all ac-emoji phps-mode cyberpunk-2019-theme cyberpunk-theme company-php company-anaconda popup-kill-ring edit-color-stamp markdown-mode use-package alert anaconda-mode centaur-tabs beacon yaml-mode csv-mode alarm-clock auto-correct auto-complete blamer zerodark-theme horizon-theme emamux avy afternoon-theme ample-theme multiple-cursors skewer-mode web-mode python))
  '(pdf-view-midnight-colors '("#dddddd" . "#000000"))
  '(scroll-bar-mode nil)
  '(show-paren-mode t)
+ '(tetris-x-colors
+   [[229 192 123]
+    [97 175 239]
+    [209 154 102]
+    [224 108 117]
+    [152 195 121]
+    [198 120 221]
+    [86 182 194]])
  '(tool-bar-mode nil)
  '(vc-annotate-background nil)
  '(vc-annotate-color-map
@@ -56,11 +69,13 @@
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(default ((t (:family "DejaVu Sans Mono" :foundry "PfEd" :slant normal :weight normal :height 128 :width normal))))
- '(centaur-tabs-active-bar-face ((t (:background "medium orchid"))))
+ '(centaur-tabs-active-bar-face ((t (:background "pale green"))))
  '(centaur-tabs-close-selected ((t (:inherit centaur-tabs-selected :foreground "OliveDrab3"))))
  '(centaur-tabs-close-unselected ((t (:inherit centaur-tabs-unselected :weight semi-bold))))
- '(centaur-tabs-default ((t (:background "gray25" :foreground "black"))))
+ '(centaur-tabs-default ((t (:background "lime green" :foreground "black"))))
  '(centaur-tabs-modified-marker-selected ((t (:inherit centaur-tabs-selected :weight semi-bold))))
+ '(centaur-tabs-selected ((t (:background "black" :foreground "white" :overline "pale green" :underline nil))))
+ '(centaur-tabs-selected-modified ((t (:background "black" :foreground "white" :overline "pale green" :underline nil))))
  '(centaur-tabs-unselected ((t (:background "gray25" :foreground "medium orchid"))))
  '(centaur-tabs-unselected-modified ((t (:background "gray23" :foreground "steel blue" :overline nil :underline nil)))))
 
@@ -194,16 +209,15 @@ Version 2015-04-09"
 (global-set-key (kbd "M-d") 'better-kill-word)
 
 
-;; (defun stringify-word()
-;;   " allways kill the whole word "
-;;   (interactive)
-;;   (forward-word)
-;;   (backward-word)
-;;   (insert-char "s")
-;;   (backward-word)
-;;   (forward-word)
-;;   (insert))
-;; (global-set-key (kbd "M-d") 'better-kill-word)
+(defun stringify-word()
+  (interactive)
+  (backward-word)
+  (insert "'")
+  (forward-word)
+ (insert "' "))
+
+(global-set-key (kbd "C-c w w") 'stringify-word)
+
 
 
 
@@ -225,6 +239,9 @@ Version 2015-04-09"
 
 ;; multiple cursors
 (global-set-key (kbd "C-c m c") 'mc/edit-lines)
+;; (global-set-key (kbd "C->")         'mc/mark-next-word-like-this)
+;; (global-set-key (kbd "C-<")         'mc/mark-previous-word-like-this)
+;; (global-set-key (kbd "C-c C-<")     'mc/mark-all-like-this)
 
 ;; upcase-region (ALL CAP REGION)
 (global-set-key (kbd "C-c C-u") 'upcase-region)
@@ -261,7 +278,7 @@ Version 2015-04-09"
 
 (global-set-key [f7] 'centaur-tabs-mode)
 (centaur-tabs-headline-match)
-(setq centaur-tabs-style "slant")
+;; (setq centaur-tabs-style "box")
 (setq centaur-tabs-set-bar 'over)
 (setq centaur-tabs-gray-out-icons 'buffer)
 (global-set-key (kbd "C-<prior>") 'centaur-tabs-backward)
@@ -282,12 +299,33 @@ Version 2015-04-09"
 ;; global autocomplete mode (company-mode)
 (global-company-mode)
 
-;; launch Term
+(use-package vterm
+  :ensure t)
+
+;; launch vTerm
 (global-set-key (kbd "s-<return>")
+(lambda ()
+  (interactive)
+  (vterm)))
+
+(define-key vterm-mode-map (kbd "C-c C-c") 'vterm--self-insert)
+
+;; launch ansi term
+(global-set-key (kbd "s-S-<return>")
 (lambda ()
 
   (interactive)
-  (term "/bin/bash"))) 
+  (ansi-term "/bin/bash")))
+
+;; eshell
+(global-set-key (kbd "C-c e s") 'eshell)
+
+;; launch eww in brave search 
+(global-set-key (kbd "C-c e w ")
+(lambda ()
+  (interactive)
+  (eww "https://duckduckgo.com/")))
+
 
 ;; toggle menubar
 (global-set-key [f9] 'menu-bar-mode)
@@ -302,13 +340,6 @@ Version 2015-04-09"
 (add-hook 'diary-hook 'appt-make-list)
 (diary 0)
 (appt-activate)
-
-
-   (use-package alert
-  :commands (alert)
-  :init
-  (setq alert-default-style 'notifier))
-;; (slack-start)
 
 
 (defun print-joke ()
@@ -329,7 +360,6 @@ Version 2015-04-09"
 ;; Set the title
 (setq dashboard-banner-logo-title "Welcome to Emacs Dashboard")
 ;; Set the banner
-(setq dashboard-startup-banner 1)
 ;; Value can be
 ;; 'official which displays the official emacs logo
 ;; 'logo which displays an alternative emacs logo
@@ -375,8 +405,10 @@ Version 2015-04-09"
 
 ;; on start
 
+(global-set-key (kbd "C-c b l") 'bongo-library)
 (global-set-key (kbd "C-x p p") 'bongo-pause/resume)
 
 (put 'upcase-region 'disabled nil)
 
 (global-set-key (kbd "C-x a s") 'dired-hide-subdir)
+(put 'downcase-region 'disabled nil)
