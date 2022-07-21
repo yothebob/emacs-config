@@ -178,7 +178,6 @@ Version 2015-04-09"
   (interactive)
   (eww "https://duckduckgo.com/")))
 
-
 ;; toggle menubar
 (global-set-key [f9] 'menu-bar-mode)
 (menu-bar-mode 0);; default off
